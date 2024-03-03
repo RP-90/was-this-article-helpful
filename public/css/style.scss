@@ -1,0 +1,150 @@
+$color-primary: #0A5EFF; // Previously $active-color
+$color-secondary: #999999; // Previously $inactive-color
+$color-tertiary: #666666; // Previously $hover-color
+$color-text: #1A1A1A;
+
+$filter-primary: invert(26%) sepia(92%) saturate(4541%) hue-rotate(218deg) brightness(102%) contrast(100%);
+$filter-secondary: invert(72%) sepia(0%) saturate(1483%) hue-rotate(135deg) brightness(84%) contrast(94%);
+$filter-tertiary: invert(40%) sepia(1%) saturate(0%) hue-rotate(46deg) brightness(96%) contrast(89%);
+
+$breakpoint-tablet: 768px;
+
+// Mixins for common styles
+@mixin button-style($border-color, $filter) {
+  border-color: $border-color;
+  &::before {
+    filter: $filter;
+  }
+}
+
+@mixin transition-default {
+  transition: all 0.3s ease;
+}
+
+// Voting buttons layout
+#wtah-voting-buttons {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.button-wrapper {
+  display: flex;
+}
+
+p.intro {
+  margin-right: 12px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+// Vote button styles
+.wtah-vote-btn {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  border: 2px solid;
+  @include button-style($color-secondary, $filter-secondary); // Use mixin
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 0 5px;
+  color: $color-text;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  @include transition-default; // Use mixin
+
+  &:hover, &:focus {
+    @include button-style($color-tertiary, $filter-tertiary); // Use mixin
+  }
+
+  &.active, &:disabled {
+    @include button-style($color-primary, $filter-primary); // Use mixin
+    cursor: default;
+  }
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+// Icons for buttons
+#wtah-yes::before {
+  background-image: url('../icons/face-smile-solid.svg');
+}
+#wtah-no::before {
+  background-image: url('../icons/face-meh-solid.svg');
+}
+
+.design2 {
+  display: block !important;
+  background: #fff;
+  position: fixed;
+  right: 24px;
+  bottom: 0;
+  flex-direction: column;
+  align-items: flex-start !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0 !important;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
+
+  p.intro {
+    margin: 0;
+    padding: 12px 15px;
+    cursor: pointer; 
+    position: relative; 
+
+    &::after {
+      content: "\f343";
+      font-family: "dashicons";
+      font-size: 18px;
+      position: absolute;
+      right: 12px;
+      top: 11px;
+      transition: transform 0.3s ease; // Rotate icon on toggle
+    }
+  }
+
+  .button-wrapper {
+    overflow: hidden;
+    padding: 0 16px;
+    max-height: 0;
+    display: flex;
+    justify-content: start;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; 
+  }
+
+  &.open .button-wrapper {
+    max-height: 100px;
+    padding: 12px 16px;
+  }
+
+  &.open p.intro::after {
+    transform: rotate(180deg); 
+  }
+
+  &.no-transition {
+    .button-wrapper, p.intro::after {
+      transition: none; // Disable transitions
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  #wtah-voting-buttons {
+    align-items: flex-start;
+    flex-direction: column;
+    button#wtah-yes {
+        margin-left: 0;
+    }
+  }
+}

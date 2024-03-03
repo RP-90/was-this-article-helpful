@@ -1,0 +1,123 @@
+#wtah-voting-buttons {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.button-wrapper {
+  display: flex;
+}
+
+p.intro {
+  margin-right: 12px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.wtah-vote-btn {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  border: 2px solid;
+  border-color: #999999;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 0 5px;
+  color: #1A1A1A;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.wtah-vote-btn::before {
+  filter: invert(72%) sepia(0%) saturate(1483%) hue-rotate(135deg) brightness(84%) contrast(94%);
+}
+.wtah-vote-btn:hover, .wtah-vote-btn:focus {
+  border-color: #666666;
+}
+.wtah-vote-btn:hover::before, .wtah-vote-btn:focus::before {
+  filter: invert(40%) sepia(1%) saturate(0%) hue-rotate(46deg) brightness(96%) contrast(89%);
+}
+.wtah-vote-btn.active, .wtah-vote-btn:disabled {
+  border-color: #0A5EFF;
+  cursor: default;
+}
+.wtah-vote-btn.active::before, .wtah-vote-btn:disabled::before {
+  filter: invert(26%) sepia(92%) saturate(4541%) hue-rotate(218deg) brightness(102%) contrast(100%);
+}
+.wtah-vote-btn::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#wtah-yes::before {
+  background-image: url("../icons/face-smile-solid.svg");
+}
+
+#wtah-no::before {
+  background-image: url("../icons/face-meh-solid.svg");
+}
+
+.design2 {
+  display: block !important;
+  background: #fff;
+  position: fixed;
+  right: 24px;
+  bottom: 0;
+  flex-direction: column;
+  align-items: flex-start !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0 !important;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
+}
+.design2 p.intro {
+  margin: 0;
+  padding: 12px 15px;
+  cursor: pointer;
+  position: relative;
+}
+.design2 p.intro::after {
+  content: "\f343";
+  font-family: "dashicons";
+  font-size: 18px;
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  transition: transform 0.3s ease;
+}
+.design2 .button-wrapper {
+  overflow: hidden;
+  padding: 0 16px;
+  max-height: 0;
+  display: flex;
+  justify-content: start;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+.design2.open .button-wrapper {
+  max-height: 100px;
+  padding: 12px 16px;
+}
+.design2.open p.intro::after {
+  transform: rotate(180deg);
+}
+.design2.no-transition .button-wrapper, .design2.no-transition p.intro::after {
+  transition: none;
+}
+
+@media (max-width: 768px) {
+  #wtah-voting-buttons {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  #wtah-voting-buttons button#wtah-yes {
+    margin-left: 0;
+  }
+}/*# sourceMappingURL=style.css.map */
