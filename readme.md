@@ -21,24 +21,26 @@ Customize the appearance and functionality through the settings page under the W
 - Information stored in admin columns and in posts as metabox
 
 ## File Structure
-was-this-article-helpful/
-┣ admin/
-┃ ┣ admin-columns.php
-┃ ┣ metabox.php
-┃ ┗ settings.php
-┣ includes/
-┃ ┣ functions.php
-┃ ┗ helpers.php
-┣ public/
-┃ ┣ css/
-┃ ┃ ┣ style.css
-┃ ┃ ┣ style.css.map
-┃ ┃ ┗ style.scss
-┃ ┣ icons/
-┃ ┃ ┣ face-meh-solid.svg
-┃ ┃ ┗ face-smile-solid.svg
-┃ ┗ js/
-┃   ┣ ajax.js
-┃   ┗ script.js
-┣ readme.md
-┗ was-this-article-helpful.php
+
+**was-this-article-helpful/**
+
+* **admin/**
+    * admin-columns.php
+    * metabox.php
+    * settings.php
+* **includes/**
+    * functions.php
+    * helpers.php
+* **public/**
+    * **css/**
+        * style.css
+        * style.css.map
+        * style.scss
+    * **icons/**
+        * face-meh-solid.svg
+        * face-smile-solid.svg
+    * **js/**
+        * ajax.js
+        * script.js
+* **readme.md**
+* **was-this-article-helpful.php**
